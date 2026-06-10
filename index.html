@@ -1,355 +1,748 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Caverton Partners — Conseil Premium</title>
-  
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cabinet de Courtage en Assurance – JAssure</title>
+
+  <!-- Tailwind CSS (CDN) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind config personnalisée -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            serif: ['"DM Serif Display"', 'serif'],
+            sans:  ['"DM Sans"', 'sans-serif'],
+          },
+          colors: {
+            navy: {
+              50:  '#f0f4f8',
+              100: '#dbe3ec',
+              200: '#b8c7da',
+              400: '#527aa6',
+              600: '#356597',
+              700: '#1f3a60',
+              800: '#14253e',
+              900: '#0b1422',
+            },
+            amber: {
+              50:  '#fdf2f3',
+              100: '#fbe4e6',
+              200: '#f7ccd0',
+              400: '#9e3541',
+              500: '#802a30',
+            },
+            slate: {
+              50:  '#f8fafc',
+              100: '#f1f5f9',
+              200: '#e2e8f0',
+              300: '#cbd5e1',
+              400: '#94a3b8',
+              500: '#64748b',
+              700: '#334155',
+              800: '#1e293b',
+              900: '#0f172a',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Feuille de style séparée -->
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-<nav>
-  <a href="#" class="nav-logo">
-    <img src="logo.png" alt="Logo Caverton Partners" class="nav-logo-img">
-  </a>
-  <ul class="nav-links">
-    <li><a href="#">Accueil</a></li>
-    <li><a href="#services">Services</a></li>
-    <li><a href="#about">À Propos</a></li>
-    <li><a href="#contact" class="nav-cta">Nous Contacter</a></li>
-  </ul>
+<!-- ══════════════════════════════════════════════════════════
+     NAVBAR
+═══════════════════════════════════════════════════════════ -->
+<header id="navbar" class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-sm">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16 md:h-20">
 
-<!-- Bouton burger -->
-  <button class="burger-btn" id="burger-btn">
-    <span></span>
-    <span></span>
-    <span></span>
-  </button>
-</nav>
+      <!-- Logo -->
+      <a href="#accueil" class="flex items-center gap-3 flex-shrink-0">
+        <img src="logo.png" alt="Logo JAssure Assurance" class="h-16 w-auto object-contain"
+             onerror="this.style.display='none';" />
+      </a>
 
-<!-- Menu mobile -->
-<div class="mobile-menu" id="mobile-menu">
-  <a href="#">Accueil</a>
-  <a href="#services">Services</a>
-  <a href="#about">À Propos</a>
-  <a href="#contact">Nous Contacter</a>
-</div>
-<section class="hero">
-  <div class="hero-bg-pattern"></div>
-  <div class="hero-grid-lines"></div>
-  <div class="hero-content">
-    <div class="hero-left">
-      <div class="hero-eyebrow">
-        <div class="hero-eyebrow-line"></div>
-        <span class="hero-subtitle">Conseil Premium </span>
+      <!-- Navigation desktop -->
+      <nav class="hidden md:flex items-center gap-1">
+        <a href="#accueil"     class="px-4 py-2 text-sm font-medium text-slate-600 hover:text-navy-700 hover:bg-slate-100 rounded-lg transition-colors">Accueil</a>
+        <a href="#assurances"  class="px-4 py-2 text-sm font-medium text-slate-600 hover:text-navy-700 hover:bg-slate-100 rounded-lg transition-colors">Nos Assurances</a>
+        <a href="#provisoire"  class="px-4 py-2 text-sm font-medium text-slate-600 hover:text-navy-700 hover:bg-slate-100 rounded-lg transition-colors">Assurance provisoire</a>
+        <a href="#apropos"     class="px-4 py-2 text-sm font-medium text-slate-600 hover:text-navy-700 hover:bg-slate-100 rounded-lg transition-colors">Qui sommes-nous</a>
+        <a href="#contact"     class="px-4 py-2 text-sm font-medium text-slate-600 hover:text-navy-700 hover:bg-slate-100 rounded-lg transition-colors">Contact</a>
+      </nav>
+
+      <!-- CTA desktop -->
+      <div class="hidden md:flex items-center gap-3">
+        <a href="#contact" class="btn-primary inline-flex items-center gap-2 px-5 py-2.5 bg-amber-500 hover:bg-amber-400 text-white font-semibold text-sm rounded-xl transition-colors shadow-md"
+           style="background:#802a30">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
+          </svg>
+          Demander un devis
+        </a>
       </div>
-      <h1 class="hero-title">Conseil Premium<br>pour votre <em>avenir</em></h1>
-      <span class="hero-title-accent">Digital.</span>
-      <p class="hero-subtitle">
-        Créations de Sociétés<br>
-        Solutions Informatiques<br>
-        Solutions Digitales
+
+      <!-- Burger mobile -->
+      <button id="burger-btn" class="md:hidden p-2 rounded-lg text-slate-600 hover:bg-slate-100 transition-colors" aria-label="Ouvrir le menu">
+        <svg id="burger-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+        <svg id="close-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Menu mobile -->
+    <div id="mobile-menu">
+      <div class="pb-4 flex flex-col gap-1">
+        <a href="#accueil"    class="mobile-link px-4 py-3 text-sm font-medium text-slate-700 hover:bg-slate-100 rounded-xl transition-colors">Accueil</a>
+        <a href="#assurances" class="mobile-link px-4 py-3 text-sm font-medium text-slate-700 hover:bg-slate-100 rounded-xl transition-colors">Nos Assurances</a>
+        <a href="#provisoire" class="mobile-link px-4 py-3 text-sm font-medium text-slate-700 hover:bg-slate-100 rounded-xl transition-colors">Assurance provisoire</a>
+        <a href="#apropos"    class="mobile-link px-4 py-3 text-sm font-medium text-slate-700 hover:bg-slate-100 rounded-xl transition-colors">Qui sommes-nous</a>
+        <a href="#contact"    class="mobile-link px-4 py-3 text-sm font-medium text-slate-700 hover:bg-slate-100 rounded-xl transition-colors">Contact</a>
+        <a href="#contact"    class="mobile-link mt-2 flex items-center justify-center gap-2 px-4 py-3 text-white font-semibold text-sm rounded-xl"
+           style="background:#802a30">Demander un devis</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     HERO
+═══════════════════════════════════════════════════════════ -->
+<section id="accueil" class="hero-bg min-h-screen flex items-center pt-20">
+  <div class="shape-circle w-96 h-96 top-[-100px] right-[-80px]"></div>
+  <div class="shape-circle w-64 h-64 bottom-[-60px] left-[10%]" style="background:rgba(128,42,48,0.05)"></div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 relative z-10">
+    <div class="max-w-3xl">
+      <div class="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full text-white/80 text-xs font-medium mb-8">
+        <span class="w-1.5 h-1.5 bg-amber-400 rounded-full animate-pulse"></span>
+        Courtier indépendant · Conseil gratuit et sans engagement
+      </div>
+      <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl text-white leading-tight mb-6">
+        Toutes vos assurances,<br/>
+        <em class="not-italic text-amber-400">un seul interlocuteur.</em>
+      </h1>
+      <p class="text-lg text-white/70 max-w-xl mb-10 leading-relaxed">
+        Particulier ou professionnel, nous comparons les meilleures offres du marché pour vous proposer la couverture la plus adaptée à votre situation — au meilleur prix.
       </p>
-      <div class="hero-actions">
-        <a href="#services" class="btn-primary">Découvrir nos Solutions</a>
-        <a href="#contact" class="btn-secondary">Prendre contact →</a>
+      <div class="flex flex-wrap gap-4">
+        <a href="#assurances" class="btn-primary inline-flex items-center gap-2 px-7 py-3.5 bg-white text-navy-800 font-semibold text-sm rounded-xl hover:bg-slate-100 transition-colors shadow-xl shadow-black/20">
+          Découvrir nos offres
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+          </svg>
+        </a>
+        <a href="#contact" class="btn-primary inline-flex items-center gap-2 px-7 py-3.5 text-white font-semibold text-sm rounded-xl transition-colors shadow-xl"
+           style="background:#802a30">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+          </svg>
+          Être rappelé
+        </a>
+      </div>
+      <div class="mt-16 flex flex-wrap gap-8">
+        <div>
+          <div class="font-serif text-3xl text-white">15+</div>
+          <div class="text-sm text-white/50 mt-0.5">Compagnies partenaires</div>
+        </div>
+        <div class="w-px bg-white/10 hidden sm:block"></div>
+        <div>
+          <div class="font-serif text-3xl text-white">98%</div>
+          <div class="text-sm text-white/50 mt-0.5">Clients satisfaits</div>
+        </div>
+        <div class="w-px bg-white/10 hidden sm:block"></div>
+        <div>
+          <div class="font-serif text-3xl text-white">24-48h</div>
+          <div class="text-sm text-white/50 mt-0.5">Délai de réponse moyen</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="wave-divider absolute bottom-0 left-0 right-0">
+    <svg viewBox="0 0 1440 80" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="height:60px;width:100%">
+      <path d="M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z" fill="#f8fafc"/>
+    </svg>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     NOS ASSURANCES
+═══════════════════════════════════════════════════════════ -->
+<section id="assurances" class="py-24 bg-slate-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-14 reveal">
+      <p class="section-label mb-3">Nos couvertures</p>
+      <h2 class="font-serif text-3xl sm:text-4xl text-navy-800 mb-4">Toutes les assurances dont vous avez besoin</h2>
+      <p class="text-slate-500 max-w-xl mx-auto">Un panel complet de solutions, négociées auprès des meilleures compagnies du marché.</p>
+    </div>
+
+    <!-- Onglets -->
+    <div class="flex justify-center mb-10 reveal">
+      <div class="inline-flex bg-white border border-slate-200 rounded-2xl p-1.5 gap-1 shadow-sm">
+        <button class="tab-btn active px-6 py-2.5 rounded-xl text-sm font-semibold transition-all" data-tab="particuliers">🏠 Particuliers</button>
+        <button class="tab-btn px-6 py-2.5 rounded-xl text-sm font-semibold text-slate-500 hover:text-navy-700 transition-all" data-tab="professionnels">💼 Professionnels</button>
       </div>
     </div>
 
-    <div class="hero-right">
-      <div class="hero-emblem">
-        <div class="hero-emblem-ring"></div>
-        <div class="hero-emblem-ring"></div>
-        <div class="hero-emblem-ring"></div>
-        <div class="hero-emblem-dot"></div>
-        <div class="hero-emblem-dot"></div>
-        <div class="hero-emblem-dot"></div>
-        <div class="hero-emblem-dot"></div>
-        <div class="hero-emblem-center">
-          <span class="hero-emblem-letter">C</span>
+    <!-- Particuliers -->
+    <div id="tab-particuliers" class="tab-panel">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div class="card-hover bg-white rounded-2xl p-6 border border-slate-100 shadow-sm reveal">
+          <div class="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-navy-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 17H5a2 2 0 01-2-2V9a2 2 0 012-2h1l2-3h6l2 3h1a2 2 0 012 2v6a2 2 0 01-2 2h-3M8 17v1a1 1 0 001 1h6a1 1 0 001-1v-1M8 17h8M9 11h.01M15 11h.01"/></svg>
+          </div>
+          <h3 class="font-semibold text-navy-800 mb-2">Assurance Auto</h3>
+          <p class="text-sm text-slate-500 leading-relaxed">Du tiers au tous risques, nous trouvons la formule adaptée à votre véhicule et votre profil conducteur.</p>
+        </div>
+        <div class="card-hover bg-white rounded-2xl p-6 border border-slate-100 shadow-sm reveal">
+          <div class="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-navy-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6V4m0 0a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"/></svg>
+          </div>
+          <h3 class="font-semibold text-navy-800 mb-2">Assurance Moto</h3>
+          <p class="text-sm text-slate-500 leading-relaxed">Deux-roues motorisés, scooters, motos de collection — couverture complète et assistance incluse.</p>
+        </div>
+        <div class="card-hover bg-white rounded-2xl p-6 border border-slate-100 shadow-sm reveal">
+          <div class="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-navy-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+          </div>
+          <h3 class="font-semibold text-navy-800 mb-2">Habitation</h3>
+          <p class="text-sm text-slate-500 leading-relaxed">Propriétaire ou locataire, protégez votre logement et vos biens contre les dommages et sinistres.</p>
+        </div>
+        <div class="card-hover bg-white rounded-2xl p-6 border border-slate-100 shadow-sm reveal">
+          <div class="w-12 h-12 rounded-xl bg-green-50 flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-green-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+          </div>
+          <h3 class="font-semibold text-navy-800 mb-2">Complémentaire Santé</h3>
+          <p class="text-sm text-slate-500 leading-relaxed">Remboursements renforcés en optique, dentaire et hospitalisation selon vos besoins réels.
+            Pensez à coupler votre mutuelle avec une prévoyance pour garantir votre maintien de revenu en cas d'arrêt de travail.
+          </p>
+        </div>
+        <div class="card-hover bg-white rounded-2xl p-6 border border-slate-100 shadow-sm reveal">
+          <div class="w-12 h-12 rounded-xl bg-purple-50 flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-purple-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+          </div>
+          <h3 class="font-semibold text-navy-800 mb-2">Prévoyance</h3>
+          <p class="text-sm text-slate-500 leading-relaxed">Invalidité, incapacité, décès — protégez vos proches et votre niveau de vie en toutes circonstances.</p>
+        </div>
+        <div class="card-hover bg-white rounded-2xl p-6 border border-slate-100 shadow-sm reveal">
+          <div class="w-12 h-12 rounded-xl bg-amber-50 flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          <h3 class="font-semibold text-navy-800 mb-2">Assurance Emprunteur</h3>
+          <p class="text-sm text-slate-500 leading-relaxed">Délégation d'assurance pour votre crédit immobilier — économisez jusqu'à 50% sur votre contrat bancaire.</p>
         </div>
       </div>
+    </div>
 
-      <div class="hero-stats">
-        <div class="hero-stat">
-          <div class="hero-stat-num">1000+</div>
-          <div class="hero-stat-label">Sociétés Créées</div>
+    <!-- Professionnels -->
+    <div id="tab-professionnels" class="tab-panel hidden">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div class="card-hover bg-white rounded-2xl p-6 border border-slate-100 shadow-sm">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-4" style="background:#eef2ff">
+            <svg class="w-6 h-6 text-navy-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          </div>
+          <h3 class="font-semibold text-navy-800 mb-2">Responsabilité Civile Pro</h3>
+          <p class="text-sm text-slate-500 leading-relaxed">Couvrez les dommages causés à des tiers dans le cadre de votre activité professionnelle.</p>
         </div>
-        <div class="hero-stat">
-          <div class="hero-stat-num">10+</div>
-          <div class="hero-stat-label">Ans d'Expérience</div>
+        <div class="card-hover bg-white rounded-2xl p-6 border border-slate-100 shadow-sm">
+          <div class="w-12 h-12 rounded-xl bg-orange-50 flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+          </div>
+          <h3 class="font-semibold text-navy-800 mb-2">Assurance Décennale</h3>
+          <p class="text-sm text-slate-500 leading-relaxed">Obligatoire pour les artisans du bâtiment, elle couvre les dommages pendant 10 ans.</p>
         </div>
-        <div class="hero-stat">
-          <div class="hero-stat-num">98%</div>
-          <div class="hero-stat-label">Clients Satisfaits</div>
+        <div class="card-hover bg-white rounded-2xl p-6 border border-slate-100 shadow-sm">
+          <div class="w-12 h-12 rounded-xl bg-green-50 flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-green-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          </div>
+          <h3 class="font-semibold text-navy-800 mb-2">Mutuelle d'Entreprise</h3>
+          <p class="text-sm text-slate-500 leading-relaxed">Obligatoire pour les salariés, nous construisons un contrat collectif attractif pour fidéliser vos équipes.
+            Complétez cette protection par un contrat de prévoyance collective pour couvrir les risques d'invalidité ou de décès.
+          </p>
+        </div>
+        <div class="card-hover bg-white rounded-2xl p-6 border border-slate-100 shadow-sm">
+          <div class="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-navy-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
+          </div>
+          <h3 class="font-semibold text-navy-800 mb-2">Multirisque Professionnelle</h3>
+          <p class="text-sm text-slate-500 leading-relaxed">Locaux, équipements, marchandises, pertes d'exploitation — une protection globale pour votre entreprise.</p>
+        </div>
+        <div class="card-hover bg-white rounded-2xl p-6 border border-slate-100 shadow-sm">
+          <div class="w-12 h-12 rounded-xl bg-slate-100 flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-slate-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg>
+          </div>
+          <h3 class="font-semibold text-navy-800 mb-2">Flotte Automobile</h3>
+          <p class="text-sm text-slate-500 leading-relaxed">Gérez simplement l'ensemble de vos véhicules professionnels avec un contrat unique et compétitif.</p>
+        </div>
+        <div class="card-hover bg-white rounded-2xl p-6 border border-slate-100 shadow-sm">
+          <div class="w-12 h-12 rounded-xl bg-purple-50 flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-purple-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+          </div>
+          <h3 class="font-semibold text-navy-800 mb-2">Assurance Cyber</h3>
+          <p class="text-sm text-slate-500 leading-relaxed">Protégez votre entreprise contre les cyberattaques, la perte de données et les rançongiciels.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center mt-10 reveal">
+      <a href="#contact" class="inline-flex items-center gap-2 text-navy-700 font-semibold text-sm hover:text-amber-500 transition-colors group">
+        Une assurance spécifique ? Contactez-nous
+        <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     ASSURANCE PROVISOIRE
+═══════════════════════════════════════════════════════════ -->
+<section id="provisoire" class="py-24 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-14 reveal">
+      <p class="section-label mb-3">Assurance provisoire</p>
+      <h2 class="font-serif text-3xl sm:text-4xl text-navy-800 mb-4">Tarifs clairs, sans surprise</h2>
+      <p class="text-slate-500 max-w-md mx-auto">Couverture immédiate et attestation disponible en ligne. Résiliable à tout moment.</p>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-3xl mx-auto reveal">
+
+      <!-- 1 jour -->
+      <div class="card-hover bg-slate-50 rounded-2xl p-7 border border-slate-100 shadow-sm text-center">
+        <div class="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center mb-4 mx-auto">
+          <svg class="w-6 h-6 text-navy-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+        </div>
+        <div class="text-sm text-slate-500 mb-2 font-medium">1 jour</div>
+        <div class="font-serif text-4xl text-navy-800 mb-1">50 <span class="text-2xl">€</span></div>
+        <div class="text-xs text-slate-400 mb-5">TTC, tout inclus</div>
+        <ul class="text-xs text-slate-500 space-y-1.5 text-left mb-5">
+          <li class="flex items-center gap-2"><svg class="w-3.5 h-3.5 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>Couverture immédiate</li>
+          <li class="flex items-center gap-2"><svg class="w-3.5 h-3.5 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>Responsabilité civile</li>
+          <li class="flex items-center gap-2"><svg class="w-3.5 h-3.5 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>Attestation en ligne</li>
+        </ul>
+        <a href="#contact" class="inline-block w-full py-2.5 text-white text-sm font-semibold rounded-xl transition-colors" style="background:#14253e">Souscrire</a>
+      </div>
+
+      <!-- 3 jours (mis en avant) -->
+      <div class="card-hover rounded-2xl p-7 shadow-lg text-center relative" style="background:linear-gradient(135deg,#1f3a60,#356597)">
+        <div class="absolute -top-3 left-1/2 -translate-x-1/2 whitespace-nowrap">
+          <span class="px-3 py-1 bg-amber-500 text-white text-xs font-semibold rounded-full shadow-md" style="background:#802a30">Meilleur rapport</span>
+        </div>
+        <div class="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center mb-4 mx-auto">
+          <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+        </div>
+        <div class="text-sm text-white/70 mb-2 font-medium">3 jours</div>
+        <div class="font-serif text-4xl text-white mb-1">65 <span class="text-2xl">€</span></div>
+        <div class="text-xs text-white/50 mb-1">soit ~21 €/jour</div>
+        <ul class="text-xs text-white/70 space-y-1.5 text-left mb-5">
+          <li class="flex items-center gap-2"><svg class="w-3.5 h-3.5 text-green-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>Couverture immédiate</li>
+          <li class="flex items-center gap-2"><svg class="w-3.5 h-3.5 text-green-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>Responsabilité civile</li>
+          <li class="flex items-center gap-2"><svg class="w-3.5 h-3.5 text-green-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>Attestation en ligne</li>
+        </ul>
+        <a href="#contact" class="inline-block w-full py-2.5 text-white text-sm font-semibold rounded-xl transition-colors" style="background:#802a30">Souscrire</a>
+      </div>
+
+      <!-- 1 semaine -->
+      <div class="card-hover bg-slate-50 rounded-2xl p-7 border border-slate-100 shadow-sm text-center">
+        <div class="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center mb-4 mx-auto">
+          <svg class="w-6 h-6 text-navy-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+        </div>
+        <div class="text-sm text-slate-500 mb-2 font-medium">1 semaine</div>
+        <div class="font-serif text-4xl text-navy-800 mb-1">80 <span class="text-2xl">€</span></div>
+        <div class="text-xs text-slate-400 mb-1">soit ~11,40 €/jour</div>
+        <div class="inline-block px-3 py-1 bg-green-50 text-green-700 text-xs rounded-full font-medium mb-5">−77 % vs 1 jour</div>
+        <ul class="text-xs text-slate-500 space-y-1.5 text-left mb-5">
+          <li class="flex items-center gap-2"><svg class="w-3.5 h-3.5 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>Couverture immédiate</li>
+          <li class="flex items-center gap-2"><svg class="w-3.5 h-3.5 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>Responsabilité civile</li>
+          <li class="flex items-center gap-2"><svg class="w-3.5 h-3.5 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>Attestation en ligne</li>
+        </ul>
+        <a href="#contact" class="inline-block w-full py-2.5 text-white text-sm font-semibold rounded-xl transition-colors" style="background:#14253e">Souscrire</a>
+      </div>
+
+    <!-- 3 jours (mis en avant) -->
+     <center>
+      <div class="card-hover rounded-2xl p-7 shadow-lg text-center relative" style="background:linear-gradient(135deg,#1f3a60,#356597)">
+        <div class="absolute -top-3 left-1/2 -translate-x-1/2 whitespace-nowrap">
+          <span class="px-3 py-1 bg-amber-500 text-white text-xs font-semibold rounded-full shadow-md" style="background:#802a30">Meilleur rapport</span>
+        </div>
+        <div class="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center mb-4 mx-auto">
+          <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+        </div>
+        <div class="text-sm text-white/70 mb-2 font-medium">10 jours</div>
+        <div class="font-serif text-4xl text-white mb-1">105 <span class="text-2xl">€</span></div>
+        <div class="text-xs text-white/50 mb-1">soit ~10 €/jour</div>
+        <ul class="text-xs text-white/70 space-y-1.5 text-left mb-5">
+          <li class="flex items-center gap-2"><svg class="w-3.5 h-3.5 text-green-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>Couverture immédiate</li>
+          <li class="flex items-center gap-2"><svg class="w-3.5 h-3.5 text-green-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>Responsabilité civile</li>
+          <li class="flex items-center gap-2"><svg class="w-3.5 h-3.5 text-green-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>Attestation en ligne</li>
+        </ul>
+        <a href="#contact" class="inline-block w-full py-2.5 text-white text-sm font-semibold rounded-xl transition-colors" style="background:#802a30">Souscrire</a>
+      </div>
+      </center>
+
+    </div>
+    <p class="text-center text-xs text-slate-400 mt-8 reveal">Tarifs indicatifs · Toutes formules incluent l'attestation en ligne et la responsabilité civile · Devis personnalisé sur demande</p>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     QUI SOMMES-NOUS
+═══════════════════════════════════════════════════════════ -->
+<section id="apropos" class="py-24 bg-slate-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid lg:grid-cols-2 gap-16 items-center">
+      <div class="reveal">
+        <p class="section-label mb-3">Qui sommes-nous</p>
+        <h2 class="font-serif text-3xl sm:text-4xl text-navy-800 mb-6 leading-snug">Votre courtier de confiance, à votre service depuis les premières démarches</h2>
+        <p class="text-slate-500 leading-relaxed mb-8">
+          Courtier indépendant immatriculé ORIAS, nous ne sommes liés à aucune compagnie d'assurance. Notre seul engagement : défendre <strong class="text-navy-700 font-semibold">vos intérêts</strong> en vous trouvant la meilleure couverture, au meilleur prix.
+        </p>
+        <a href="#contact" class="inline-flex items-center gap-2 px-6 py-3 text-white font-semibold text-sm rounded-xl transition-colors" style="background:#14253e">
+          Prendre rendez-vous
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+        </a>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+        <div class="card-hover bg-white rounded-2xl p-6 border border-slate-100 reveal">
+          <div class="w-10 h-10 rounded-xl bg-amber-100 flex items-center justify-center mb-4">
+            <svg class="w-5 h-5 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          </div>
+          <h4 class="font-semibold text-navy-800 mb-2">Proximité</h4>
+          <p class="text-sm text-slate-500 leading-relaxed">Un conseiller dédié, joignable directement — pas de centre d'appel.</p>
+        </div>
+        <div class="card-hover bg-white rounded-2xl p-6 border border-slate-100 reveal">
+          <div class="w-10 h-10 rounded-xl bg-blue-100 flex items-center justify-center mb-4">
+            <svg class="w-5 h-5 text-navy-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          </div>
+          <h4 class="font-semibold text-navy-800 mb-2">Réactivité</h4>
+          <p class="text-sm text-slate-500 leading-relaxed">Réponses rapides. En cas de sinistre, nous sommes à vos côtés pour gérer les démarches.</p>
+        </div>
+        <div class="card-hover bg-white rounded-2xl p-6 border border-slate-100 reveal">
+          <div class="w-10 h-10 rounded-xl bg-green-100 flex items-center justify-center mb-4">
+            <svg class="w-5 h-5 text-green-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+          </div>
+          <h4 class="font-semibold text-navy-800 mb-2">Meilleurs tarifs</h4>
+          <p class="text-sm text-slate-500 leading-relaxed">Nous comparons objectivement les offres de nos 15+ compagnies partenaires.</p>
+        </div>
+        <div class="card-hover bg-white rounded-2xl p-6 border border-slate-100 reveal">
+          <div class="w-10 h-10 rounded-xl bg-purple-100 flex items-center justify-center mb-4">
+            <svg class="w-5 h-5 text-purple-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+          </div>
+          <h4 class="font-semibold text-navy-800 mb-2">Clarté des contrats</h4>
+          <p class="text-sm text-slate-500 leading-relaxed">Nous vous expliquons chaque clause. Vous signez en sachant exactement ce que vous avez.</p>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<section id="services">
-  <div class="container">
-    <div class="services-header">
+
+<!-- ══════════════════════════════════════════════════════════
+     CONTACT & DEVIS
+═══════════════════════════════════════════════════════════ -->
+<section id="contact" class="py-24 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-14 reveal">
+      <p class="section-label mb-3">Contact & Devis</p>
+      <h2 class="font-serif text-3xl sm:text-4xl text-navy-800 mb-4">Obtenez votre devis gratuit</h2>
+      <p class="text-slate-500 max-w-md mx-auto">Remplissez le formulaire ou contactez-nous directement. Réponse garantie sous 24h.</p>
+    </div>
+
+    <div class="grid lg:grid-cols-5 gap-10">
+
+      <!-- ── Formulaire ─────────────────────────────────── -->
+      <div class="lg:col-span-3 bg-white rounded-3xl p-8 shadow-sm border border-slate-100 reveal">
+        <h3 class="font-semibold text-navy-800 mb-6">Votre demande</h3>
+
+        <form id="contact-form" action="contact.php" method="POST" enctype="multipart/form-data" onsubmit="handleSubmit(event)" novalidate>
+
+          <!-- Anti-spam honeypot -->
+          <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+
+          <!-- Prénom / Nom -->
+          <div class="grid sm:grid-cols-2 gap-4 mb-4">
+            <div>
+              <label for="prenom" class="block text-xs font-semibold text-slate-500 uppercase tracking-wide mb-1.5">Prénom *</label>
+              <input id="prenom" type="text" name="prenom" required placeholder="Jean"
+                class="form-input w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm text-slate-800 placeholder-slate-400 transition-all" />
+            </div>
+            <div>
+              <label for="nom" class="block text-xs font-semibold text-slate-500 uppercase tracking-wide mb-1.5">Nom *</label>
+              <input id="nom" type="text" name="nom" required placeholder="Dupont"
+                class="form-input w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm text-slate-800 placeholder-slate-400 transition-all" />
+            </div>
+          </div>
+
+          <!-- Téléphone / Email -->
+          <div class="grid sm:grid-cols-2 gap-4 mb-4">
+            <div>
+              <label for="telephone" class="block text-xs font-semibold text-slate-500 uppercase tracking-wide mb-1.5">Téléphone *</label>
+              <input id="telephone" type="tel" name="telephone" required placeholder="06 12 34 56 78"
+                class="form-input w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm text-slate-800 placeholder-slate-400 transition-all" />
+            </div>
+            <div>
+              <label for="email" class="block text-xs font-semibold text-slate-500 uppercase tracking-wide mb-1.5">Email *</label>
+              <input id="email" type="email" name="email" required placeholder="jean@exemple.fr"
+                class="form-input w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm text-slate-800 placeholder-slate-400 transition-all" />
+            </div>
+          </div>
+
+          <!-- Type d'assurance -->
+          <div class="mb-4">
+            <label for="type_assurance" class="block text-xs font-semibold text-slate-500 uppercase tracking-wide mb-1.5">Type d'assurance souhaité</label>
+            <select id="type_assurance" name="type_assurance"
+              class="form-input w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm text-slate-800 transition-all appearance-none cursor-pointer">
+              <option value="">-- Sélectionnez --</option>
+              <optgroup label="Particuliers">
+                <option>Auto</option>
+                <option>Moto</option>
+                <option>Habitation</option>
+                <option>Complémentaire Santé</option>
+                <option>Prévoyance</option>
+                <option>Emprunteur</option>
+                <option>Assurance provisoire — 1 jour (50 €)</option>
+                <option>Assurance provisoire — 3 jours (60 €)</option>
+                <option>Assurance provisoire — 1 semaine (80 €)</option>
+              </optgroup>
+              <optgroup label="Professionnels">
+                <option>Responsabilité Civile Pro</option>
+                <option>Assurance Décennale</option>
+                <option>Mutuelle d'Entreprise</option>
+                <option>Multirisque Professionnelle</option>
+                <option>Flotte Automobile</option>
+                <option>Assurance Cyber</option>
+              </optgroup>
+              <option>Autre / Je ne sais pas encore</option>
+            </select>
+          </div>
+
+          <!-- Message -->
+          <div class="mb-4">
+            <label for="message" class="block text-xs font-semibold text-slate-500 uppercase tracking-wide mb-1.5">Votre message</label>
+            <textarea id="message" name="message" rows="4" placeholder="Décrivez votre situation ou vos besoins..."
+              class="form-input w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm text-slate-800 placeholder-slate-400 transition-all resize-none"></textarea>
+          </div>
+
+          <!-- ── Pièces jointes ──────────────────────── -->
+          <div class="mb-6">
+            <label class="block text-xs font-semibold text-slate-500 uppercase tracking-wide mb-2">
+              Pièces jointes <span class="font-normal normal-case text-slate-400">(facultatif)</span>
+            </label>
+
+            <!-- Bouton principal -->
+            <div class="flex items-center gap-3 mb-3">
+              <label for="attachments" class="btn-attachment">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13"/>
+                </svg>
+                Joindre un fichier
+                <span id="attachment-badge" class="attachment-badge hidden">0</span>
+              </label>
+              <span class="text-xs text-slate-400">PDF, JPG, PNG, DOC — max 5 Mo par fichier</span>
+            </div>
+
+            <!-- Input caché -->
+            <input id="attachments" type="file" name="attachment[]" multiple
+              accept=".pdf,.jpg,.jpeg,.png,.doc,.docx" class="hidden"
+              onchange="updateFileLabel(this)" />
+
+            <!-- Zone drag & drop -->
+            <label for="attachments"
+              class="file-drop-zone flex items-center gap-3 px-4 py-3 bg-slate-50 border border-slate-200 border-dashed rounded-xl cursor-pointer group">
+              <svg class="w-4 h-4 text-slate-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/>
+              </svg>
+              <p id="file-label" class="text-xs text-slate-400">Glissez vos fichiers ici ou utilisez le bouton ci-dessus</p>
+            </label>
+
+            <!-- Liste des fichiers sélectionnés -->
+            <div id="file-list" class="hidden mt-2 space-y-1.5"></div>
+          </div>
+
+          <!-- RGPD -->
+          <div class="mb-6">
+            <label class="flex items-start gap-3 cursor-pointer">
+              <input type="checkbox" name="rgpd" required class="mt-0.5 w-4 h-4 rounded accent-navy-700" />
+              <span class="text-xs text-slate-400 leading-relaxed">
+                J'accepte que mes données soient utilisées pour le traitement de ma demande conformément à la
+                <a href="#" class="underline hover:text-navy-700">politique de confidentialité</a> du cabinet.
+                Données non transmises à des tiers.
+              </span>
+            </label>
+          </div>
+
+          <!-- Bouton envoi -->
+          <button type="submit" id="submit-btn"
+            class="btn-primary w-full flex items-center justify-center gap-2 px-6 py-3.5 text-white font-semibold text-sm rounded-xl transition-colors"
+            style="background:#14253e">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
+            </svg>
+            Envoyer ma demande
+          </button>
+
+          <!-- Messages de retour -->
+          <div id="form-success" class="hidden mt-4 p-4 bg-green-50 border border-green-200 rounded-xl text-sm text-green-700 text-center font-medium">
+            ✓ Votre demande a bien été envoyée ! Nous vous recontactons sous 24h.
+          </div>
+          <div id="form-error" class="hidden mt-4 p-4 bg-red-50 border border-red-200 rounded-xl text-sm text-red-700 text-center font-medium">
+            <span>✗ Une erreur est survenue. Veuillez réessayer ou nous appeler directement.</span>
+          </div>
+
+        </form>
+      </div>
+
+      <!-- ── Coordonnées ─────────────────────────────── -->
+      <div class="lg:col-span-2 flex flex-col gap-5">
+        <div class="rounded-3xl p-7 text-white reveal" style="background:linear-gradient(135deg,#0b1422,#1f3a60)">
+          <h3 class="font-semibold mb-5">Nos coordonnées</h3>
+          <div class="space-y-4">
+            <div class="flex items-start gap-3">
+              <div class="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center flex-shrink-0">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                </svg>
+              </div>
+              <div>
+                <div class="text-xs text-white/50 mb-0.5">Adresse</div>
+                <div class="text-sm leading-relaxed">10 Avenue Antoine Chanut<br/>60100 Creil</div>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center flex-shrink-0">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                </svg>
+              </div>
+              <div>
+                <div class="text-xs text-white/50 mb-0.5">Téléphone</div>
+                <a href="tel:+33344310364" class="text-sm hover:text-amber-400 transition-colors">03 44 31 03 64</a><br/>
+                <a href="tel:+33660894046" class="text-sm hover:text-amber-400 transition-colors">06 60 89 40 46</a>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center flex-shrink-0">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                </svg>
+              </div>
+              <div>
+                <div class="text-xs text-white/50 mb-0.5">Email</div>
+                <a href="mailto:contact@jassureassurances.com" class="text-sm hover:text-amber-400 transition-colors">contact@jassureassurances.com</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-3xl p-7 border border-slate-100 shadow-sm reveal">
+          <h3 class="font-semibold text-navy-800 mb-4">Horaires d'ouverture</h3>
+          <div class="space-y-2.5">
+            <div class="flex justify-between text-sm">
+              <span class="text-slate-500">Lundi – Vendredi</span>
+              <span class="font-medium text-navy-800">9h00 – 13h00 / 14h00 – 17h00</span>
+            </div>
+            <div class="flex justify-between text-sm">
+              <span class="text-slate-500">Samedi et Dimanche</span>
+              <span class="font-medium text-navy-800">Fermé</span>
+            </div>
+            <div class="mt-4 p-3 bg-amber-50 rounded-xl flex items-center gap-2 text-xs text-amber-700">
+              <span class="w-1.5 h-1.5 bg-amber-500 rounded-full"></span>
+              Urgences sinistres : disponible 7j/7
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════════════════════════ -->
+<footer style="background:#0b1422" class="text-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-10 pb-10 border-b border-white/10">
       <div>
-        <div class="section-eyebrow">
-          <div class="section-eyebrow-line"></div>
-          <span class="section-eyebrow-text">Nos Expertises</span>
+        <div class="flex items-center gap-2 mb-4">
+          <img src="logo.png" alt="Logo JAssure" class="h-10 w-auto object-contain" onerror="this.style.display='none'" />
+          <span class="font-serif text-lg">JASSURE<span style="color:#c0a060">ASSURANCE</span></span>
         </div>
-        <h2 class="section-title">Des solutions <em>sur mesure</em><br>pour chaque besoin</h2>
-      </div>
-      <p class="services-desc">
-        Caverton Partners accompagne les entrepreneurs et les entreprises à chaque étape de leur développement. Notre équipe d'experts conjugue rigueur juridique, maîtrise technologique et vision stratégique pour vous offrir un conseil d'excellence.
-      </p>
-    </div>
-
-    <div class="services-grid">
-      <div class="service-card">
-        <div class="service-icon">
-          <span class="service-number">01</span>
-          <svg viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="8" y="24" width="40" height="28" rx="1" stroke="var(--copper)" stroke-width="1.5"/>
-            <path d="M4 28L28 8L52 28" stroke="var(--copper)" stroke-width="1.5" stroke-linecap="square"/>
-            <rect x="22" y="36" width="12" height="16" stroke="var(--copper)" stroke-width="1.5"/>
-            <rect x="14" y="30" width="8" height="8" fill="rgba(109,119,129,0.15)" stroke="var(--copper)" stroke-width="1"/>
-            <rect x="34" y="30" width="8" height="8" fill="rgba(109,119,129,0.15)" stroke="var(--copper)" stroke-width="1"/>
-          </svg>
-        </div>
-        <h3 class="service-title">Créations<br>de Sociétés</h3>
-        <p class="service-desc">Accompagnement complet dans la création de votre structure juridique : choix de la forme sociale, rédaction des statuts, immatriculation, et conseils fiscaux personnalisés.</p>
-        <a href="#contact" class="service-link">Lire plus</a>
-      </div>
-
-      <div class="service-card">
-        <div class="service-icon">
-          <span class="service-number">02</span>
-          <svg viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="6" y="18" width="44" height="10" rx="1" stroke="var(--copper)" stroke-width="1.5"/>
-            <rect x="6" y="32" width="44" height="10" rx="1" stroke="var(--copper)" stroke-width="1.5"/>
-            <circle cx="14" cy="23" r="2" fill="var(--copper)"/>
-            <circle cx="14" cy="37" r="2" fill="var(--copper)"/>
-            <path d="M28 8V18M28 42V52" stroke="var(--copper)" stroke-width="1.5" stroke-dasharray="2 2"/>
-            <circle cx="28" cy="8" r="3" stroke="var(--copper)" stroke-width="1.5"/>
-            <circle cx="28" cy="52" r="3" stroke="var(--copper)" stroke-width="1.5"/>
-          </svg>
-        </div>
-        <h3 class="service-title">Solutions<br>Informatiques</h3>
-        <p class="service-desc">Infrastructure cloud, systèmes d'information, cybersécurité et maintenance. Nous déployons des environnements robustes et scalables adaptés à votre activité.</p>
-        <a href="#contact" class="service-link">Lire plus</a>
-      </div>
-
-      <div class="service-card">
-        <div class="service-icon">
-          <span class="service-number">03</span>
-          <svg viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="28" cy="28" r="10" stroke="var(--copper)" stroke-width="1.5"/>
-            <circle cx="28" cy="28" r="4" fill="rgba(109,119,129,0.2)" stroke="var(--copper)" stroke-width="1.5"/>
-            <path d="M28 8V14M28 42V48M8 28H14M42 28H48" stroke="var(--copper)" stroke-width="1.5" stroke-linecap="square"/>
-            <path d="M13.7 13.7L18 18M38 38L42.3 42.3M13.7 42.3L18 38M38 18L42.3 13.7" stroke="var(--copper)" stroke-width="1.5"/>
-          </svg>
-        </div>
-        <h3 class="service-title">Solutions<br>Digitales</h3>
-        <p class="service-desc">Stratégie digitale, création de sites web, applications mobiles, référencement et présence en ligne. Nous transformons votre vision en expériences numériques mémorables.</p>
-        <a href="#contact" class="service-link">Lire plus</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="about">
-  <div class="container">
-    <div class="about-grid">
-      <div class="about-left">
-        <div class="section-eyebrow">
-          <div class="section-eyebrow-line"></div>
-          <span class="section-eyebrow-text" style="color:var(--copper-light)">Pourquoi Nous Choisir</span>
-        </div>
-        <h2 class="section-title">Une approche <em>différente</em><br>du conseil</h2>
-        <p class="about-body">
-          Caverton Partners se distingue par une relation client fondée sur la confiance, la transparence et l'excellence. Chaque dossier est traité avec une attention particulière, porté par des professionnels engagés dans votre réussite.
-        </p>
-<div class="about-pillars">
-  <div class="pillar">
-    <span class="pillar-num">01</span>
-    <div>
-      <div class="pillar-title">Expertise Certifiée</div>
-      <div class="pillar-desc">Des experts qualifiés dans leurs domaines, avec des certifications reconnues et une expérience terrain significative.</div>
-    </div>
-  </div>
-  <div class="pillar">
-    <span class="pillar-num">02</span>
-    <div>
-      <div class="pillar-title">Approche Sur Mesure</div>
-      <div class="pillar-desc">Chaque solution est pensée spécifiquement pour votre contexte, vos contraintes et vos objectifs de croissance.</div>
-    </div>
-  </div>
-  <div class="pillar">
-    <span class="pillar-num">03</span>
-    <div>
-      <div class="pillar-title">Conseil Premium</div>
-      <div class="pillar-desc">Une alliance unique entre personnalisation radicale et solutions optimisées, offrant le prestige d'un accompagnement haut de gamme dédié à votre réussite.</div>
-    </div>
-  </div>
-  <div class="pillar">
-    <span class="pillar-num">04</span>
-    <div>
-      <div class="pillar-title">Accompagnement Continu</div>
-      <div class="pillar-desc">Un suivi post-mission systématique pour garantir la pérennité et l'évolution de vos solutions dans le temps.</div>
-    </div>
-  </div>
-</div>
-      </div>
-
-      <div class="about-visual">
-        <div class="about-card-mockup">
-          <div class="mockup-stat-grid">
-            <div class="mockup-stat">
-              <span class="mockup-stat-val">1000+</span>
-              <span class="mockup-stat-lbl">Sociétés Créées</span>
-            </div>
-            <div class="mockup-stat">
-              <span class="mockup-stat-val">10+</span>
-              <span class="mockup-stat-lbl">Années d'Exp.</span>
-            </div>
-            <div class="mockup-stat">
-              <span class="mockup-stat-val">98%</span>
-              <span class="mockup-stat-lbl">Satisfaction</span>
-            </div>
-            <div class="mockup-stat">
-              <span class="mockup-stat-val">50+</span>
-              <span class="mockup-stat-lbl">Partenaires</span>
-            </div>
-          </div>
-        </div>
-        <div style="text-align:center; margin-top: 28px;">
-  <span style="font-size: 3.1rem; font-family: 'Montserrat', sans-serif; color: var(--copper-light); font-weight: 700; letter-spacing: 0.05em; line-height: 1.1;">À PARTIR DE 180 €</span>
-  <div style="font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--copper-light); opacity: 0.6; margin-top: 8px;">Conseils personnalisés & solutions optimisées</div>
-</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="contact">
-  <div class="container">
-    <div class="section-eyebrow">
-      <div class="section-eyebrow-line"></div>
-      <span class="section-eyebrow-text">Parlons de Votre Projet</span>
-    </div>
-    <h2 class="section-title" style="margin-bottom:60px;">Nous <em>contacter</em></h2>
-
-    <div class="contact-layout">
-      <div class="contact-left">
-        <p style="font-size:14px;line-height:1.9;color:var(--text-mid);font-weight:300;">
-          Notre équipe est disponible pour répondre à toutes vos questions et vous accompagner dans vos projets. N'hésitez pas à nous contacter pour un premier échange sans engagement.
-        </p>
-
-        <div class="contact-info-item">
-          <div class="contact-icon">
-            <svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
-          </div>
-          <div>
-            <div class="contact-info-label">Téléphone</div>
-            <div class="contact-info-value">07 85 58 14 26</div>
-          </div>
-        </div>
-
-        <div class="contact-info-item">
-          <div class="contact-icon">
-            <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-          </div>
-          <div>
-            <div class="contact-info-label">Email</div>
-            <div class="contact-info-value">info@cavertonpartners.fr</div>
-          </div>
-        </div>
-
-        <div class="contact-info-item">
-          <div class="contact-icon">
-            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-          </div>
-          <div>
-            <div class="contact-info-label">Adresse</div>
-            <div class="contact-info-value">10 Avenue Antoine Chanut, Creil</div>
-          </div>
+        <p class="text-sm text-white/40 leading-relaxed max-w-xs">Cabinet de courtage en assurance indépendant, au service des particuliers et des professionnels.</p>
+        <div class="flex gap-3 mt-5">
+          <a href="https://fr.linkedin.com/company/jassure-assurance" aria-label="LinkedIn"
+            class="w-8 h-8 rounded-lg bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+          <a href="https://www.facebook.com/p/Jassure-Assurances-100063669784967/" aria-label="Facebook"
+            class="w-8 h-8 rounded-lg bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+          </a>
+          <a href="https://www.instagram.com/jassureassurances/" aria-label="Instagram"
+            class="w-8 h-8 rounded-lg bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg>
+          </a>
         </div>
       </div>
-
-      <div class="contact-form-container">
-  <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 24px; color: var(--navy); margin-bottom: 24px; font-weight: 400;">Votre demande</h3>
-
-  <form id="contact-form" action="contact.php" method="POST">
-    <div class="form-row">
-      <div class="form-group">
-        <label class="form-label" for="f-prenom">Prénom *</label>
-        <input type="text" id="f-prenom" name="prenom" required placeholder="Jean">
+      <div>
+        <h4 class="text-xs font-semibold uppercase tracking-widest text-white/40 mb-4">Navigation</h4>
+        <ul class="space-y-2.5">
+          <li><a href="#accueil"    class="text-sm text-white/60 hover:text-white transition-colors">Accueil</a></li>
+          <li><a href="#assurances" class="text-sm text-white/60 hover:text-white transition-colors">Nos Assurances</a></li>
+          <li><a href="#provisoire" class="text-sm text-white/60 hover:text-white transition-colors">Assurance provisoire</a></li>
+          <li><a href="#apropos"    class="text-sm text-white/60 hover:text-white transition-colors">Qui sommes-nous</a></li>
+          <li><a href="#contact"    class="text-sm text-white/60 hover:text-white transition-colors">Contact & Devis</a></li>
+        </ul>
       </div>
-      <div class="form-group">
-        <label class="form-label" for="f-nom">Nom *</label>
-        <input type="text" id="f-nom" name="nom" required placeholder="Dupont">
-      </div>
-    </div>
-
-    <div class="form-row">
-      <div class="form-group">
-        <label class="form-label" for="f-phone">Téléphone</label>
-        <input type="tel" id="f-phone" name="telephone" placeholder="06 00 00 00 00">
-      </div>
-      <div class="form-group">
-        <label class="form-label" for="f-email">Email *</label>
-        <input type="email" id="f-email" name="email" required placeholder="jean@exemple.com">
+      <div>
+        <h4 class="text-xs font-semibold uppercase tracking-widest text-white/40 mb-4">Informations légales</h4>
+        <div class="space-y-2 text-xs text-white/40 leading-relaxed">
+          <p><strong class="text-white/60">Courtier en assurance</strong><br/>Immatriculé à l'ORIAS sous le n° XX XXX XXX<br/>(<a href="https://www.orias.fr" target="_blank" rel="noopener" class="underline hover:text-white/70">www.orias.fr</a>)</p>
+          <p>SAS au capital de XX XXX €<br/>SIREN : XXX XXX XXX<br/>Siège social : 10 Avenue Antoine Chanut, 60100 Creil</p>
+          <p>Soumis au contrôle de l'ACPR – 4 Place de Budapest, 75009 Paris.</p>
+        </div>
+        <div class="mt-4 flex gap-4">
+          <a href="#" class="text-xs text-white/40 hover:text-white/70 underline transition-colors">Mentions légales</a>
+          <a href="#" class="text-xs text-white/40 hover:text-white/70 underline transition-colors">RGPD / Vie privée</a>
+        </div>
       </div>
     </div>
-
-
-    <div class="form-group full" style="margin-bottom: 20px;">
-      <label class="form-label" for="f-message">Message *</label>
-      <textarea id="f-message" name="message" required placeholder="Décrivez votre projet en quelques mots..."></textarea>
-    </div>
-
-    <div class="form-group full" style="margin-bottom: 20px;">
-  <label class="form-label" for="f-file">Pièce jointe (optionnel)</label>
-  <input type="file" id="f-file" name="fichier" accept=".pdf,.doc,.docx,.jpg,.png">
-</div>
-
-    <button type="submit" class="form-submit-btn">
-      <span>Envoyer la demande</span>
-    </button>
-    
-    <div id="form-error" class="form-error-box"></div>
-    <div id="form-success" class="form-success-box" style="display:none; margin-top:15px; padding:12px; background:#e6f4ea; border:1px solid #b7e1cd; color:#137333; font-size:13px; font-weight:500; text-align:center;">
-      Votre message a bien été envoyé avec succès !
-    </div>
-  </form>
-</div>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <div class="footer-inner">
-    <div class="footer-logo">
-      <div class="footer-logo-c">C</div>
-      <div class="footer-brand-text">
-        <div class="main">Caverton</div>
-        <div class="sub">Partners</div>
-      </div>
-    </div>
-    <div class="footer-center">
-      <div class="footer-tagline">Conseil Premium pour votre avenir Digital.</div>
-      <div class="footer-copy">&copy; 2026 Caverton Partners. Tous droits réservés.</div>
-    </div>
-    <div class="footer-socials">
-      <a href="#" class="social-link">LN</a>
-      <a href="#" class="social-link">TW</a>
+    <div class="pt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
+      <p class="text-xs text-white/30">© <span id="year"></span> JassureAssurance. Tous droits réservés.</p>
+      <p class="text-xs text-white/20">Données personnelles traitées conformément au RGPD (UE) 2016/679.</p>
     </div>
   </div>
 </footer>
 
+<!-- Script séparé -->
 <script src="script.js"></script>
+
 </body>
 </html>
