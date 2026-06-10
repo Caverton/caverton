@@ -12,7 +12,7 @@ if (!$prenom || !$nom || !$email || !$message) {
     exit;
 }
 
-$destinataire = 'contact@cavertonpartners.fr';
+$destinataire = 'contact@jassureassurances.com';
 $sujet        = "=?UTF-8?B?" . base64_encode("Nouveau message – $prenom $nom") . "?=";
 $boundary     = md5(uniqid(time()));
 
@@ -51,7 +51,7 @@ if ($hasFile) {
     $fileContent = chunk_split(base64_encode(file_get_contents($_FILES['fichier']['tmp_name'])));
     $fileType    = $_FILES['fichier']['type'];
 
-    $headers  = "From: info@cavertonpartners.fr\r\n";
+    $headers  = "From: contact@jassureassurances.com\r\n";
     $headers .= "Reply-To: $email\r\n";
     $headers .= "MIME-Version: 1.0\r\n";
     $headers .= "Content-Type: multipart/mixed; boundary=\"$boundary\"\r\n";
